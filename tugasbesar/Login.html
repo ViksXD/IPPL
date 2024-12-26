@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/desain.css">
+    <title>Login Page</title>
+    <script src="Main.js" defer></script>
+</head>
+<body data-page="Login Page"> 
+    <div class="left-side">
+        <img src="image/foto.png" alt="Laundry Image">
+    </div>
+    <div class="right-side">
+        <img src="image/logo.png" alt="Logo" class="logo">
+        <div class="login-container">
+            <h1><b>Welcome Back!</b></h1>
+            <form class="login-form" action="login.php" method="POST">
+                <h2>Login to your account</h2>
+                <div class="input-group">
+                    <b><label for="username">Username</label></b>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="input-group">
+                    <b><label for="password">Password</label></b>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <b><a href="#" class="forgot-password">Forgot Password?</a></b>
+                <button type="submit" class="btn-login"><b>Login</b></button>
+            </form>
+            <p class="signup-text"><b>Don’t have an account? </b>
+                <a href="SignUp.html" class="signup-link">Sign up</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

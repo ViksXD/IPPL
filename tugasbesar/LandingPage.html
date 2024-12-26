@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            backgroundWhite: '#f7feff',
+            lightBlue: '#016394',
+            h2Blue: '#21B7E2',
+            h2bluelight: '#64d5f5',
+          },
+          fontFamily: {
+            heading: ['Outfit'],
+            hero: ['Grandstander'],
+            rasa: ['Rasa'],
+            inter: ['Inter'],
+          },
+        },
+      },
+    };
+  </script>
+  <title>Landing Page</title>
+    <body data-page="Landing Page"></body>
+  <script src="Main.js" defer></script>
+  <link rel="stylesheet" href="LandingPage.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="w-full mx-auto p-6 mb-24 bg-[#d5ecfa]">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <img src="image/logo.png" alt="Logo" class="w-1/4 md:w-1/12" />
+
+      <!-- Desktop Menu -->
+      <div class="hidden font-bold md:flex space-x-12">
+        <a href="SignUp.html" id="SignUp" class="hover:text-indigo-500 text-h2Blue">Sign Up</a>
+        <a href="Login.html" id="Login" class="hover:text-indigo-500 text-h2Blue">Login</a>
+      </div>
+
+      <!-- Hamburger Icon (Mobile) -->
+      <div class="md:hidden">
+        <button id="menuToggle" class="focus:outline-none">
+          <span id="menuIcon" class="text-2xl">☰</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden mt-4 font-bold bg-[#d5ecfa]">
+      <a href="Login.html" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Login</a>
+      <a href="SignUp.html" class="block py-2 text-center text-h2Blue hover:text-indigo-500">SignUp</a>
+    </div>
+  </nav>
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu'); // Fixed reference
+
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+  <!-- Hero -->
+  <section>
+    <div class='relative w-full mt-32'>
+      <div class='container p-12 flex flex-col-reverse md:flex-row items-center px-6 md:px-24 m-auto mt-10 space-y-0 md:space-y-0 justify-around'>
+        
+        <!-- {/* Left item */} -->
+        <div class='flex flex-col space-y-6 md:space-y-12 md:w-1/2 mb-8 md:mb-32'>
+        <p class='bg-lightBlue text-backgroundWhite text-center font-heading rounded-full p-3 font-bold w-full md:w-1/2 mx-auto md:mx-0 hover:bg-lightBlue'>
+                20% Discount for 1 Month Subscription
+          </p>
+          <h1 class='max-w-lg text-3xl md:text-5xl font-hero font-light text-center md:text-left'>
+            Make your clothes sparkle in a flash!
+          </h1>
+          <p class='max-w-lg text-center md:text-left text-[#00334C] font-heading font-medium '>
+            Suds Laundry service will wash, dry, and fold your laundry at an affordable price. Pickup and drop-off options available!
+          </p>
+          <a href="#" class='bg-[#75E5FF] text-center font-heading rounded-full p-3 shadow-2xl font-bold w-3/4 md:w-1/2 mx-auto md:mx-0 hover:bg-lightBlue'>
+            Sign Up!
+          </a>
+                    <!-- {/* Custom text with different styles */} -->
+        <div class='text-left block space-x-3 md:flex md:space-x-10'>
+            <div class='inline-block space-x-3 mb-6 md:mb-0'>
+                <span class='text-4xl md:text-5xl font-rasa font-bold text-[#00334C]'>18m+</span> 
+                <span class='text-sm md:text-md font-heading text-[#00334C] inline-block'> Happy <br /> Customers</span>    
+            </div>
+            
+            <div class='inline-block space-x-3'>
+                <span class='text-4xl md:text-5xl font-rasa font-bold text-[#00334C]'>10+</span> 
+                <span class='text-sm md:text-md font-heading text-[#00334C] inline-block'> Years of <br /> Experience</span>
+            </div>  
+        </div>
+
+        </div>
+
+        <!-- {/* Hero Image with Background */} -->
+        <div class=''>
+          <!-- {/* Hero Image */} -->
+          <img src=image/hero.png alt="Hero" class='-mt-24' />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class='bg-lightBlue py-10 px-4 md:px-40 mt-12 w-full'>
+      <p class='font-hero text-center text-h2bluelight'>HOW IT WORKS</p>
+      <h1 class='text-center text-backgroundWhite font-heading font-medium text-4xl md:text-6xl'>
+        Get it done in 4 Steps
+      </h1>
+    
+      <!-- {/* BOXES */} -->
+      <div class='flex flex-col mt-20 gap-10 justify-center items-center md:flex-row'>
+        <div class='px-6 py-6 bg-white rounded-xl shadow-2xl w-60'>
+          <p class='font-hero font-medium text-xl text-center text-h2Blue'>STEP 1</p>
+          <h1 class='font-heading font-medium text-center text-3xl mt-5'>Pickup</h1>
+          <img src=image/step1.png alt="Pickup step illustration" class='w-full h-48 object-contain' />
+        </div>
+    
+        <div class='px-6 py-6 bg-white rounded-xl shadow-2xl w-60'>
+          <p class='font-hero font-medium text-xl text-center text-h2Blue'>STEP 2</p>
+          <h1 class='font-heading font-medium text-center text-3xl mt-5'>Wash & Dry</h1>
+          <img src=image/step2.png alt="Washing and drying process" class='w-full h-48 object-contain'/>
+        </div>
+    
+        <div class='px-6 py-6 bg-white rounded-xl shadow-2xl w-60'>
+          <p class='font-hero font-medium text-xl text-center text-h2Blue'>STEP 3</p>
+          <h1 class='font-heading font-medium text-center text-3xl mt-5'>Fold</h1>
+          <img src=image/step3.png alt="Folding clothes step" class='w-full h-48 object-contain'/>
+        </div>
+    
+        <div class='px-6 py-6 bg-white rounded-xl shadow-2xl w-60'>
+          <p class='font-hero font-medium text-xl text-center text-h2Blue'>STEP 4</p>
+          <h1 class='font-heading font-medium text-center text-3xl mt-5'>Delivery</h1>
+          <img src=image/step4.png alt="Delivery step illustration" class='w-full h-48 object-contain'/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-10 px-4 md:px-40 mt-12 w-full">
+    <p class="font-hero text-center text-h2Blue">Services</p>
+    <h1 class="text-center font-heading font-medium text-4xl md:text-6xl mb-32">
+      Services & Packages
+    </h1>
+    <div class="flex flex-col mt-20 gap-10 justify-center items-center md:flex-row">
+      
+      <!-- {/* Shoe Laundry */} -->
+      <div class="bg-white items-center w-64 shadow-2xl rounded-2xl p-5 flex flex-col">
+        <img src=image/image1.png alt="Shoe Laundry" />
+        <h1 class="font-heading text-center font-medium text-2xl">Shoe Laundry</h1>
+        <h2 class="font-heading text-lg text-center text-h2Blue">Rp. 99,000.00</h2>
+        <ul class="space-y-3 mt-5">
+          <li class="text-center flex items-center justify-center gap-2">
+             Deep cleaning
+          </li>
+          <li class="text-center flex items-center justify-center gap-2">
+             Odor and stain removal
+          </li>
+          <li class="text-center flex items-center justify-center gap-2">
+             Restores original look and freshness
+          </li>
+        </ul>
+        <a 
+          href="#" 
+          class="bg-lightBlue text-white font-heading rounded-full p-3 shadow-2xl font-bold w-3/4 md:w-1/2 mt-5 flex justify-center items-center 
+          transition-all duration-300 ease-in-out hover:bg-h2bluelight"
+        >
+          Choose
+        </a>
+      </div>
+
+      <!-- {/* Regular Laundry */} -->
+      <div class="bg-backgroundWhite items-center md:-mt-16 w-72 shadow-2xl rounded-2xl p-5 flex flex-col">
+        <p class="text-center text-h2Blue">Most Popular!</p>
+        <img src=image/image3.png alt="Regular Laundry" />
+        <h1 class="font-heading text-center font-medium text-2xl">Regular Laundry</h1>
+        <h2 class="font-heading mt-2 rounded-xl text-lg text-center text-h2Blue">Rp. 89,000.00</h2>
+        <ul class="space-y-3 mt-5">
+          <li class="text-center flex items-center justify-center gap-2">
+             Standard wash, dry, and fold
+          </li>
+          <li class="text-center flex items-center justify-center gap-2">
+             Suitable for everyday clothing
+          </li>
+          <li class="text-center flex items-center justify-center gap-2">
+             Convenient and hassle-free
+          </li>
+        </ul>
+        <a 
+          href="#" 
+          class="bg-lightBlue text-white font-heading rounded-full p-3 shadow-2xl font-bold w-3/4 md:w-1/2 mt-5 flex justify-center items-center 
+          transition-all duration-300 ease-in-out hover:bg-h2bluelight"
+        >
+          Choose
+        </a>
+      </div>
+
+      <!-- {/* Instant Laundry */} -->
+      <div class="bg-white items-center w-64 shadow-2xl rounded-2xl p-5 flex flex-col">
+        <img src=image/image2.png alt="Instant Laundry" />
+        <h1 class="font-heading text-center font-medium text-2xl">Instant Laundry</h1>
+        <h2 class="font-heading text-lg text-center text-h2Blue">Rp. 99,000.00</h2>
+        <ul class="space-y-3 mt-5">
+          <li class="text-center flex items-center justify-center gap-2">
+             Express wash and dry
+          </li>
+          <li class="text-center flex items-center justify-center gap-2">
+             Quick turnaround for urgent needs
+          </li>
+          <li class="text-center flex items-center justify-center gap-2">
+             Perfect for busy schedules
+          </li>
+        </ul>
+        <a 
+          href="#" 
+          class="bg-lightBlue text-white font-heading rounded-full p-3 shadow-2xl font-bold w-3/4 md:w-1/2 mt-5 flex justify-center items-center 
+          transition-all duration-300 ease-in-out hover:bg-h2bluelight"
+        >
+          Choose
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="mt-20">
+    <p class='font-hero text-center text-h2bluelight'>OUR TESTIMONIALS</p>
+    <h1 class='text-center font-heading font-medium text-4xl md:text-6xl'>
+      What our customer have to say.
+    </h1>
+    <div class="max-w-5xl mx-auto mt-20 mb-32">
+      <div class="overflow-x-hidden overflow-y-visible relative">
+        <div id="slider" class="flex transition-transform duration-300">
+          <!-- Slide 1 -->
+          <div class="min-w-full grid grid-cols-3 gap-8 auto-rows-min">
+            <!-- Testimonial 1 -->
+            <div class="p-6 bg-white rounded-lg shadow-xl text-center">
+              <div class="flex flex-col items-center">
+                <img
+                  src="https://via.placeholder.com/80"
+                  alt="Avatar"
+                  class="w-20 h-20 rounded-full mb-4"
+                />
+                <p class="text-gray-700 text-lg italic">
+                  "Tailwind CSS makes styling so much easier!"
+                </p>
+                <h3 class="text-gray-900 font-semibold mt-4">- Jane Doe</h3>
+              </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="p-6 bg-white rounded-lg shadow-xl text-center">
+              <div class="flex flex-col items-center">
+                <img
+                  src="https://via.placeholder.com/80"
+                  alt="Avatar"
+                  class="w-20 h-20 rounded-full mb-4"
+                />
+                <p class="text-gray-700 text-lg italic">
+                  "Amazing framework with great flexibility."
+                </p>
+                <h3 class="text-gray-900 font-semibold mt-4">- John Smith</h3>
+              </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div class="p-6 bg-white rounded-lg shadow-xl text-center">
+              <div class="flex flex-col items-center">
+                <img
+                  src="https://via.placeholder.com/80"
+                  alt="Avatar"
+                  class="w-20 h-20 rounded-full mb-4"
+                />
+                <p class="text-gray-700 text-lg italic">
+                  "I love the utility-first approach."
+                </p>
+                <h3 class="text-gray-900 font-semibold mt-4">- Sarah Lee</h3>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="min-w-full grid grid-cols-3 gap-4">
+            <!-- Add more testimonials here -->
+            <div class="p-6 bg-white rounded-lg shadow-xl text-center">
+              <div class="flex flex-col items-center">
+                <img
+                  src="https://via.placeholder.com/80"
+                  alt="Avatar"
+                  class="w-20 h-20 rounded-full mb-4"
+                />
+                <p class="text-gray-700 text-lg italic">
+                  "Tailwind is my go-to framework now!"
+                </p>
+                <h3 class="text-gray-900 font-semibold mt-4">- Mark Brown</h3>
+              </div>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-xl text-center">
+              <div class="flex flex-col items-center">
+                <img
+                  src="https://via.placeholder.com/80"
+                  alt="Avatar"
+                  class="w-20 h-20 rounded-full mb-4"
+                />
+                <p class="text-gray-700 text-lg italic">
+                  "Simplifies web development beautifully."
+                </p>
+                <h3 class="text-gray-900 font-semibold mt-4">- Emily White</h3>
+              </div>
+            </div>
+            <div class="p-6 bg-white rounded-lg shadow-xl text-center">
+              <div class="flex flex-col items-center">
+                <img
+                  src="https://via.placeholder.com/80"
+                  alt="Avatar"
+                  class="w-20 h-20 rounded-full mb-4"
+                />
+                <p class="text-gray-700 text-lg italic">
+                  "Utility classes save so much time!"
+                </p>
+                <h3 class="text-gray-900 font-semibold mt-4">- Alex Green</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Navigation buttons -->
+        <button
+          id="prev"
+          class="absolute left-0 top-1/2 -translate-y-1/2 p-3 bg-gray-200 hover:bg-gray-300 rounded-full"
+        >
+          ❮
+        </button>
+        <button
+          id="next"
+          class="absolute right-0 top-1/2 -translate-y-1/2 p-3 bg-gray-200 hover:bg-gray-300 rounded-full"
+        >
+          ❯
+        </button>
+      </div>
+    </div>
+    
+  </section>
+  <script src="LandingPage.js"></script>
+</body>
+</html>

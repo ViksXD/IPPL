@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d1ecff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 60px; /* Tinggi header */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: 50px; /* Tinggi logo lebih besar */
+    margin-right: 10px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #007bff;
+    margin: 0 20px; /* Jarak antar menu */
+    font-weight: bold;
+    font-size: 16px; /* Ukuran font */
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Posisi teks di kanan */
+    margin-right: 20px; /* Jarak dengan gambar profil */
+}
+
+.profile-name {
+    font-size: 16px; /* Ukuran teks nama */
+    font-weight: bold; /* Teks tebal untuk nama */
+    color: #00A9FF; /* Warna nama */
+}
+
+.seller-role {
+    font-size: 14px; /* Ukuran lebih kecil untuk Seller */
+    font-weight: normal; /* Tidak tebal */
+    color: #00A9FF; /* Warna Seller */
+    margin-top: -10px;
+}
+
+
+
+.grid-section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 120px; /* Jarak keseluruhan */
+    margin-top: 20px; /* Memperbaiki posisi agar lebih mendekati gambar */
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 180px; /* Ukuran kartu */
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px; /* Jarak antar kartu */
+    text-align: center;
+}
+
+.card-icon {
+    width: 60px; /* Ukuran ikon lebih besar */
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/SignUp.css">
+    <title>Registration Page</title>
+    <body data-page="Registration Page"></body>
+</head>
+    
+    <body> 
+          <div class="left-side">
+            <img src="image/laundry-illustration.png" alt="Laundry Image">
+          </div>
+          <div class="right-side">
+              <img src="image/logo.png" alt="Logo" class="logo">
+              <h1><b>Let's Started!</b></h1>
+              <div class="login-container">
+                    <form class="login-form" action="akun.php" method="POST" id="signupForm" enctype="multipart/form-data">
+                        <h2>Create an account</h2>
+                        <div class="left-side2">
+                            <div class="input-group">
+                                <b><label for="username">Username</label></b>
+                                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                            </div>
+                            <div class="input-group">
+                                <b><label for="email">Your email</label></b>
+                                <input type="email" id="email" name="email" placeholder="name@company.com" required>
+                            </div>
+                        </div>
+                        <div class="right-side2">
+                            <div class="input-group">
+                                <b><label for="password">Password</label></b>
+                                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                            </div>
+                            <div class="input-group">
+                                <b><label for="role">Role</label></b>
+                                <select id="role" name="role" required>
+                                    <option value="" disabled selected>Choose your role</option>
+                                    <option value="customer">Customer</option>
+                                    <option value="karyawan">Karyawan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group2">
+                            <b><label for="profile-picture">Profile Picture</label></b>
+                            <input type="file" id="profile-picture" name="profile_picture">
+                        </div>
+                        <button type="submit" id="submit" class="btn-login"><b>Sign in</b></button>
+                    </form>
+
+                  <div class="login-prompt">
+                      <span>Already have an account?</span>
+                      <a button id="Login">Login here</a>
+                  </div>
+              </div>
+          </div>
+          
+          </div>
+    </body>
+</html>
+
