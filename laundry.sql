@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2024 at 06:40 AM
--- Server version: 10.4.28-MariaDB
+-- Generation Time: Dec 31, 2024 at 07:07 AM
+-- Server version: 8.0.40
 -- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -29,31 +29,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `akun` (
   `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `nama` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer`
---
-
-CREATE TABLE `customer` (
-  `id_pesanan` int(11) NOT NULL,
-  `username` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` varchar(10) DEFAULT NULL,
+  `profile_pict` varchar(255) DEFAULT NULL
+) 
 
 --
--- Table structure for table `karyawan`
+-- Dumping data for table `akun`
 --
 
-CREATE TABLE `karyawan` (
-  `username` varchar(50) NOT NULL,
-  `hire_date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `akun` (`username`, `email`, `password`, `role`, `profile_pict`) VALUES
+('pembeliSetia', '305muhammadibrahim@gmail.com', '$2y$10$sWeN8GhPcz/.u1yh/k3os.kJYHIrOSBUqBMwYNkAQAuigERQcvpB6', 'customer', NULL),
+('teukuibrahim', '305muhammadibrahim@gmail.com', '$2y$10$9nHcPAxoGIfP48Lcb3pQZOUPXBru5.pvfzlHK/GwtondoSDOU1U62', 'karyawan', NULL),
+('teukuibrahim12', '305muhammadibrahim@gmail.com', '$2y$10$j66vVosinng4cwIv2zHMbez3P4jUC6i3FCINC28QAP1.aq.Crh/dK', 'customer', NULL);
 
 -- --------------------------------------------------------
 
@@ -62,59 +51,20 @@ CREATE TABLE `karyawan` (
 --
 
 CREATE TABLE `katalog` (
-  `id_katalog` int(11) NOT NULL,
-  `harga` decimal(10,2) NOT NULL,
-  `spesifikasi` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+  `id_katalog` int NOT NULL,
+  `rating` decimal(3,2) DEFAULT NULL,
+  `jenis` varchar(50) NOT NULL
+) 
 
 --
--- Table structure for table `keuangan`
+-- Dumping data for table `katalog`
 --
 
-CREATE TABLE `keuangan` (
-  `bulan` int(11) NOT NULL,
-  `total_pemasukan` decimal(15,2) DEFAULT NULL,
-  `id_pembayaran` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `notadigital`
---
-
-CREATE TABLE `notadigital` (
-  `id_nota` int(11) NOT NULL,
-  `nama_customer` varchar(100) DEFAULT NULL,
-  `id_pesanan` int(11) DEFAULT NULL,
-  `id_pembayaran` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `notifikasi`
---
-
-CREATE TABLE `notifikasi` (
-  `id_notifikasi` int(11) NOT NULL,
-  `pesan` text DEFAULT NULL,
-  `tanggal_waktu` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pembayaran`
---
-
-CREATE TABLE `pembayaran` (
-  `id_pembayaran` int(11) NOT NULL,
-  `id_pesanan` int(11) NOT NULL,
-  `harga` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `katalog` (`id_katalog`, `rating`, `jenis`) VALUES
+(1, NULL, 'oneday'),
+(2, NULL, 'regular'),
+(3, NULL, 'bedcover'),
+(4, NULL, 'shoes');
 
 -- --------------------------------------------------------
 
@@ -123,37 +73,44 @@ CREATE TABLE `pembayaran` (
 --
 
 CREATE TABLE `pesanan` (
-  `id_pesanan` int(11) NOT NULL,
-  `nama_customer` varchar(100) NOT NULL,
-  `nama_karyawan` varchar(100) DEFAULT NULL,
-  `id_katalog` int(11) DEFAULT NULL,
-  `id_pembayaran` int(11) DEFAULT NULL,
-  `tanggal` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_pesanan` int NOT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `id_katalog` int DEFAULT NULL,
+  `stat_pembayaran` tinyint(1) DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
+  `total_harga` decimal(10,2) NOT NULL,
+  `proses` tinyint DEFAULT '0'
+) 
+
+--
+-- Dumping data for table `pesanan`
+--
+
+INSERT INTO `pesanan` (`id_pesanan`, `username`, `id_katalog`, `stat_pembayaran`, `tanggal`, `total_harga`, `proses`) VALUES
+(11, 'teukuibrahim', 2, 1, '2024-12-18', 60000.00, 1),
+(19, 'pembeliSetia', 1, 1, '2024-12-26', 50000.00, 4),
+(20, 'pembeliSetia', 2, 1, '2024-12-26', 60000.00, 0),
+(21, 'teukuibrahim12', 1, 1, '2024-12-27', 140000.00, 4);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `proseslaundry`
+-- Table structure for table `rating`
 --
 
-CREATE TABLE `proseslaundry` (
-  `id_pesanan` int(11) NOT NULL,
-  `proses` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+CREATE TABLE `rating` (
+  `id_rating` int NOT NULL,
+  `rating` tinyint NOT NULL
+) 
 
 --
--- Table structure for table `review`
+-- Dumping data for table `rating`
 --
 
-CREATE TABLE `review` (
-  `id_review` int(11) NOT NULL,
-  `id_customer` int(11) DEFAULT NULL,
-  `id_pesanan` int(11) DEFAULT NULL,
-  `isi_review` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `rating` (`id_rating`, `rating`) VALUES
+(1, 5),
+(2, 3),
+(3, 5);
 
 --
 -- Indexes for dumped tables
@@ -166,136 +123,57 @@ ALTER TABLE `akun`
   ADD PRIMARY KEY (`username`);
 
 --
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`id_pesanan`),
-  ADD KEY `username` (`username`);
-
---
--- Indexes for table `karyawan`
---
-ALTER TABLE `karyawan`
-  ADD PRIMARY KEY (`username`);
-
---
 -- Indexes for table `katalog`
 --
 ALTER TABLE `katalog`
   ADD PRIMARY KEY (`id_katalog`);
 
 --
--- Indexes for table `keuangan`
---
-ALTER TABLE `keuangan`
-  ADD PRIMARY KEY (`bulan`),
-  ADD KEY `id_pembayaran` (`id_pembayaran`);
-
---
--- Indexes for table `notadigital`
---
-ALTER TABLE `notadigital`
-  ADD PRIMARY KEY (`id_nota`),
-  ADD KEY `id_pesanan` (`id_pesanan`),
-  ADD KEY `id_pembayaran` (`id_pembayaran`);
-
---
--- Indexes for table `notifikasi`
---
-ALTER TABLE `notifikasi`
-  ADD PRIMARY KEY (`id_notifikasi`);
-
---
--- Indexes for table `pembayaran`
---
-ALTER TABLE `pembayaran`
-  ADD PRIMARY KEY (`id_pembayaran`),
-  ADD KEY `id_pesanan` (`id_pesanan`);
-
---
 -- Indexes for table `pesanan`
 --
 ALTER TABLE `pesanan`
   ADD PRIMARY KEY (`id_pesanan`),
+  ADD KEY `username` (`username`),
   ADD KEY `id_katalog` (`id_katalog`);
 
 --
--- Indexes for table `proseslaundry`
+-- Indexes for table `rating`
 --
-ALTER TABLE `proseslaundry`
-  ADD PRIMARY KEY (`id_pesanan`);
-
---
--- Indexes for table `review`
---
-ALTER TABLE `review`
-  ADD PRIMARY KEY (`id_review`),
-  ADD KEY `id_customer` (`id_customer`),
-  ADD KEY `id_pesanan` (`id_pesanan`);
+ALTER TABLE `rating`
+  ADD PRIMARY KEY (`id_rating`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `notifikasi`
+-- AUTO_INCREMENT for table `katalog`
 --
-ALTER TABLE `notifikasi`
-  MODIFY `id_notifikasi` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `katalog`
+  MODIFY `id_katalog` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `pesanan`
+--
+ALTER TABLE `pesanan`
+  MODIFY `id_pesanan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `rating`
+--
+ALTER TABLE `rating`
+  MODIFY `id_rating` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `customer`
---
-ALTER TABLE `customer`
-  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`username`) REFERENCES `akun` (`username`) ON DELETE CASCADE;
-
---
--- Constraints for table `karyawan`
---
-ALTER TABLE `karyawan`
-  ADD CONSTRAINT `karyawan_ibfk_1` FOREIGN KEY (`username`) REFERENCES `akun` (`username`) ON DELETE CASCADE;
-
---
--- Constraints for table `keuangan`
---
-ALTER TABLE `keuangan`
-  ADD CONSTRAINT `keuangan_ibfk_1` FOREIGN KEY (`id_pembayaran`) REFERENCES `pembayaran` (`id_pembayaran`);
-
---
--- Constraints for table `notadigital`
---
-ALTER TABLE `notadigital`
-  ADD CONSTRAINT `notadigital_ibfk_1` FOREIGN KEY (`id_pesanan`) REFERENCES `pesanan` (`id_pesanan`) ON DELETE CASCADE,
-  ADD CONSTRAINT `notadigital_ibfk_2` FOREIGN KEY (`id_pembayaran`) REFERENCES `pembayaran` (`id_pembayaran`) ON DELETE CASCADE;
-
---
--- Constraints for table `pembayaran`
---
-ALTER TABLE `pembayaran`
-  ADD CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`id_pesanan`) REFERENCES `pesanan` (`id_pesanan`) ON DELETE CASCADE;
-
---
 -- Constraints for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  ADD CONSTRAINT `pesanan_ibfk_1` FOREIGN KEY (`id_katalog`) REFERENCES `katalog` (`id_katalog`) ON DELETE SET NULL;
-
---
--- Constraints for table `proseslaundry`
---
-ALTER TABLE `proseslaundry`
-  ADD CONSTRAINT `proseslaundry_ibfk_1` FOREIGN KEY (`id_pesanan`) REFERENCES `pesanan` (`id_pesanan`) ON DELETE CASCADE;
-
---
--- Constraints for table `review`
---
-ALTER TABLE `review`
-  ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_pesanan`),
-  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`id_pesanan`) REFERENCES `pesanan` (`id_pesanan`) ON DELETE CASCADE;
+  ADD CONSTRAINT `pesanan_ibfk_1` FOREIGN KEY (`username`) REFERENCES `akun` (`username`),
+  ADD CONSTRAINT `pesanan_ibfk_2` FOREIGN KEY (`id_katalog`) REFERENCES `katalog` (`id_katalog`) ON DELETE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
