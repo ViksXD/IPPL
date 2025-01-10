@@ -1,22 +1,8 @@
 <?php
 session_start();
 // Database connection (assumed)
-$servername = "localhost";
-$username_db = "root";
-$password_db = "ibrahim30";
-$dbname = "laundry";
+require_once 'db_connection.php';
 
-// Create connection
-$conn = new mysqli($servername, $username_db, $password_db, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Check if the user is logged in and fetch user data
-$username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
-$role = isset($_SESSION['role']) ? $_SESSION['role'] : 'Visitor';
 
 // If logged in, fetch additional user details (e.g., profile picture)
 if ($username !== 'Guest') {
@@ -46,8 +32,8 @@ $conn->close();
         <!-- Desktop Menu -->
         <div class="hidden font-bold md:flex space-x-12 text-[#21B7E2]">
             <a href="MenuCustomer.php" class="hover:text-indigo-500 text-h2Blue">Home</a>
-            <a href="Receipt.html" class="hover:text-indigo-500 text-h2Blue">Receipt</a>
-            <a href="Process.html" class="hover:text-indigo-500 text-h2Blue">Process</a>
+            <a href="daftarPesanan_Nota.php" class="hover:text-indigo-500 text-h2Blue">Receipt</a>
+            <a href="daftarPesanan.php" class="hover:text-indigo-500 text-h2Blue">Process</a>
             <a href="katalog.php" class="hover:text-indigo-500 text-h2Blue">Catalog</a>
         </div>
 
@@ -72,8 +58,8 @@ $conn->close();
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden mt-4 font-bold bg-[#d5ecfa] text-[#21B7E2]">
             <a href="MenuCustomer.php" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Home</a>
-            <a href="Receipt.html" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Receipt</a>
-            <a href="Process.html" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Process</a>
+            <a href="daftarPesanan_Nota.php" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Receipt</a>
+            <a href="daftarPesanan.php" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Process</a>
             <a href="katalog.php" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Catalog</a>
         </div>
     </nav>
@@ -96,15 +82,20 @@ $conn->close();
          </a>
 
         <!-- Receipt -->
-        <div class="bg-white shadow-md rounded-lg p-20 text-center hover:shadow-lg transition">
-            <img src="image/Review2.png" alt="Receipt Icon" class="w-16 mx-auto mb-4">
-            <h3 class="text-blue-500 font-bold text-lg">Receipt</h3>
-        </div>
-        <!-- Process -->
-        <div class="bg-white shadow-md rounded-lg p-20 text-center hover:shadow-lg transition">
-            <img src="image/proses.png" alt="Process Icon" class="w-16 mx-auto mb-4">
-            <h3 class="text-blue-500 font-bold text-lg">Process</h3>
-        </div>
+         <a href="daftarPesanan_Nota.php">
+            <div class="bg-white shadow-md rounded-lg p-20 text-center hover:shadow-lg transition">
+                <img src="image/Review2.png" alt="Receipt Icon" class="w-16 mx-auto mb-4">
+                <h3 class="text-blue-500 font-bold text-lg">Receipt</h3>
+            </div>
+         </a>
+
+        <!-- proses_2 -->
+         <a href="daftarPesanan.php">
+            <div class="bg-white shadow-md rounded-lg p-20 text-center hover:shadow-lg transition">
+                <img src="image/proses.png" alt="proses_2 Icon" class="w-16 mx-auto mb-4">
+                <h3 class="text-blue-500 font-bold text-lg">Process</h3>
+            </div>            
+         </a>
     </div>
 
 </body>

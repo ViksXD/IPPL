@@ -1,18 +1,7 @@
 <?php
 session_start();
 // Database connection (assumed)
-$servername = "localhost";
-$username_db = "root";
-$password_db = "ibrahim30";
-$dbname = "laundry";
-
-// Create connection
-$conn = new mysqli($servername, $username_db, $password_db, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once 'db_connection.php';
 
 // Check if the user is logged in and fetch user data
 $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
@@ -48,10 +37,10 @@ $conn->close();
 
         <!-- Desktop Menu -->
         <div class="hidden font-bold md:flex space-x-12 text-[#21B7E2]">
-            <a href="MenuCustomer.php" class="hover:text-indigo-500 text-h2Blue">Home</a>
-            <a href="Receipt.html" class="hover:text-indigo-500 text-h2Blue">Receipt</a>
-            <a href="Process.html" class="hover:text-indigo-500 text-h2Blue">Process</a>
-            <a href="katalog.php" class="hover:text-indigo-500 text-h2Blue">Catalog</a>
+            <a href="MenuKaryawan.php" class="hover:text-indigo-500 text-h2Blue">Home</a>
+            <a href="daftarNota_Karyawan.php" class="hover:text-indigo-500 text-h2Blue">Receipt</a>
+            <a href="update_proses.php" class="hover:text-indigo-500 text-h2Blue">Process</a>
+            <a href="katalogKaryawan.php" class="hover:text-indigo-500 text-h2Blue">Catalog</a>
         </div>
 
         <div class="flex items-center space-x-4">
@@ -74,10 +63,10 @@ $conn->close();
 
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden mt-4 font-bold bg-[#d5ecfa] text-[#21B7E2]">
-            <a href="MenuCustomer.php" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Home</a>
-            <a href="Receipt.html" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Receipt</a>
-            <a href="Process.html" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Process</a>
-            <a href="katalog.php" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Catalog</a>
+            <a href="MenuKaryawan.php" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Home</a>
+            <a href="daftarNota_Karyawan.php" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Receipt</a>
+            <a href="update_proses.php" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Process</a>
+            <a href="katalogKaryawan.php" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Catalog</a>
         </div>
     </nav>
     <script>
@@ -89,29 +78,27 @@ $conn->close();
         });
     </script>
 
-<script>
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu'); // Fixed reference
-
-    menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
-</script>
-
     <main>
         <section class="grid-section">
-            <div class="card">
-                <img src="image/Catalog1.PNG" alt="Catalog" class="card-icon">
-                <p>Catalog</p>
-            </div>
-            <div class="card">
-                <img src="image/proses.PNG" alt="Review" class="card-icon">
-                <p>Proses</p>
-            </div>
-            <div class="card">
-                <img src="image/Review2.PNG" alt="Review" class="card-icon">
-                <p>Daftar Nota</p>
-            </div>
+            <a href="katalogKaryawan.php">
+                <div class="card">
+                    <img src="image/Catalog1.PNG" alt="Catalog" class="card-icon">
+                    <p>Catalog</p>
+                </div>
+            </a>
+            <a href="update_proses.php">
+                <div class="card">
+                    <img src="image/proses.PNG" alt="Review" class="card-icon">
+                    <p>Process</p>
+                </div>
+            </a>
+            <a href="daftarNota_Karyawan.php">
+                <div class="card">
+                    <img src="image/Review2.PNG" alt="Review" class="card-icon">
+                    <p>Receipt</p>
+                </div>
+            </a>
+
         </section>
     </main>
 </body>

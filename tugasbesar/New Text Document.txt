@@ -1,0 +1,162 @@
+ALTER TABLE `akun`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `customer`
+--
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`id_customer`),
+  ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `history_nota`
+--
+ALTER TABLE `history_nota`
+  ADD PRIMARY KEY (`id_history`),
+  ADD KEY `id_nota` (`id_nota`);
+
+--
+-- Indexes for table `karyawan`
+--
+ALTER TABLE `karyawan`
+  ADD PRIMARY KEY (`id_karyawan`),
+  ADD KEY `username` (`username`);
+
+--
+-- Indexes for table `katalog`
+--
+ALTER TABLE `katalog`
+  ADD PRIMARY KEY (`id_katalog`);
+
+--
+-- Indexes for table `nota_digital`
+--
+ALTER TABLE `nota_digital`
+  ADD PRIMARY KEY (`id_nota`),
+  ADD KEY `username` (`username`),
+  ADD KEY `id_pesanan` (`id_pesanan`);
+
+--
+-- Indexes for table `pakaian`
+--
+ALTER TABLE `pakaian`
+  ADD PRIMARY KEY (`id_pakaian`),
+  ADD KEY `id_katalog` (`id_katalog`);
+
+--
+-- Indexes for table `pesanan`
+--
+ALTER TABLE `pesanan`
+  ADD PRIMARY KEY (`id_pesanan`),
+  ADD KEY `username` (`username`),
+  ADD KEY `id_katalog` (`id_katalog`);
+
+--
+-- Indexes for table `rating`
+--
+ALTER TABLE `rating`
+  ADD PRIMARY KEY (`id_rating`),
+  ADD KEY `id_customer` (`id_customer`),
+  ADD KEY `id_pesanan` (`id_pesanan`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `id_customer` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `history_nota`
+--
+ALTER TABLE `history_nota`
+  MODIFY `id_history` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `karyawan`
+--
+ALTER TABLE `karyawan`
+  MODIFY `id_karyawan` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `katalog`
+--
+ALTER TABLE `katalog`
+  MODIFY `id_katalog` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `nota_digital`
+--
+ALTER TABLE `nota_digital`
+  MODIFY `id_nota` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pakaian`
+--
+ALTER TABLE `pakaian`
+  MODIFY `id_pakaian` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pesanan`
+--
+ALTER TABLE `pesanan`
+  MODIFY `id_pesanan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `rating`
+--
+ALTER TABLE `rating`
+  MODIFY `id_rating` int NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `customer`
+--
+ALTER TABLE `customer`
+  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`username`) REFERENCES `akun` (`username`);
+
+--
+-- Constraints for table `history_nota`
+--
+ALTER TABLE `history_nota`
+  ADD CONSTRAINT `history_nota_ibfk_1` FOREIGN KEY (`id_nota`) REFERENCES `nota_digital` (`id_nota`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `karyawan`
+--
+ALTER TABLE `karyawan`
+  ADD CONSTRAINT `karyawan_ibfk_1` FOREIGN KEY (`username`) REFERENCES `akun` (`username`);
+
+--
+-- Constraints for table `nota_digital`
+--
+ALTER TABLE `nota_digital`
+  ADD CONSTRAINT `nota_digital_ibfk_1` FOREIGN KEY (`username`) REFERENCES `akun` (`username`) ON DELETE CASCADE,
+  ADD CONSTRAINT `nota_digital_ibfk_2` FOREIGN KEY (`id_pesanan`) REFERENCES `pesanan` (`id_pesanan`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `pakaian`
+--
+ALTER TABLE `pakaian`
+  ADD CONSTRAINT `pakaian_ibfk_1` FOREIGN KEY (`id_katalog`) REFERENCES `katalog` (`id_katalog`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `pesanan`
+--
+ALTER TABLE `pesanan`
+  ADD CONSTRAINT `pesanan_ibfk_1` FOREIGN KEY (`username`) REFERENCES `akun` (`username`),
+  ADD CONSTRAINT `pesanan_ibfk_2` FOREIGN KEY (`id_katalog`) REFERENCES `katalog` (`id_katalog`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `rating`
+--
+ALTER TABLE `rating`
+  ADD CONSTRAINT `rating_ibfk_1` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_customer`) ON DELETE CASCADE,
+  ADD CONSTRAINT `rating_ibfk_2` FOREIGN KEY (`id_pesanan`) REFERENCES `pesanan` (`id_pesanan`) ON DELETE CASCADE;
+COMMIT;

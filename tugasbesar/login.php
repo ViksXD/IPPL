@@ -2,17 +2,7 @@
 session_start(); // Start the session
 
 // Connect to the database
-$servername = "localhost";
-$username = "root";
-$password = "ibrahim30";
-$dbname = "laundry";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once 'db_connection.php';
 
 // Retrieve form data
 $user = $_POST['username'];

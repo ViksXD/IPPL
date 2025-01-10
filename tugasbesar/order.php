@@ -12,7 +12,7 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
 </head>
 <body class="bg-gray-100 flex flex-col justify-center items-center min-h-screen">
   <div class="bg-white rounded-lg shadow-lg p-6 w-96">
-    <h1 class="text-xl font-bold text-[#00a9ff] text-center mb-4">Laundry Service</h1>
+    <h1 class="text-xl font-bold text-[#00a9ff] text-center mb-4">One Day Service</h1>
     
     <form action="process_order.php" method="POST">
       <div class="space-y-4">
@@ -55,5 +55,17 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
       </button>
     </form>
   </div>
+  <script>
+    document.getElementById("pesananForm").addEventListener("submit", function (e) {
+        const reguler = parseInt(document.getElementById("reguler").value) || 0;
+        const premium = parseInt(document.getElementById("premium").value) || 0;
+        const treatment = parseInt(document.getElementById("treatment").value) || 0;
+
+        if (reguler <= 0 && premium <= 0 && treatment <= 0) {
+            e.preventDefault(); // Mencegah form submit
+            alert("Minimal isi salah satu jumlah pesanan: Reguler, Premium, atau Treatment.");
+        }
+    });
+</script>
 </body>
 </html>

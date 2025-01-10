@@ -3,6 +3,9 @@ session_start();
 // Check if the user is logged in
 $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
 $role = isset($_SESSION['role']) ? $_SESSION['role'] : 'Visitor';
+
+// Determine the home link based on the role
+$homeLink = ($role === 'customer') ? 'MenuCustomer.php' : 'MenuKaryawan.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,13 +24,12 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : 'Visitor';
     <nav class="w-full mx-auto p-6 mb-24 bg-[#d5ecfa]">
         <div class="flex items-center justify-between">
       
-
         <!-- Logo -->
         <img src="image/logo.png" alt="Logo" class="w-1/4 md:w-1/12" />
 
         <!-- Desktop Menu -->
         <div class="hidden font-bold md:flex space-x-12 text-[#21B7E2]">
-            <a href="MenuCustomer.php" class="hover:text-indigo-500 text-h2Blue">Home</a>
+            <a href="<?php echo htmlspecialchars($homeLink); ?>" class="hover:text-indigo-500 text-h2Blue">Home</a>
             <a href="Receipt.html" class="hover:text-indigo-500 text-h2Blue">Receipt</a>
             <a href="Process.html" class="hover:text-indigo-500 text-h2Blue">Process</a>
             <a href="katalog.php" class="hover:text-indigo-500 text-h2Blue">Catalog</a>
@@ -42,7 +44,6 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : 'Visitor';
             <img src="image/profilelogo.png" alt="Profile" class="w-12 h-12 rounded-full">
         </div>
 
-
         <!-- Hamburger Icon (Mobile) -->
         <div class="md:hidden">
             <button id="menuToggle" class="focus:outline-none">
@@ -53,7 +54,7 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : 'Visitor';
 
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden mt-4 font-bold bg-[#d5ecfa] text-[#21B7E2]">
-            <a href="MenuCustomer.php" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Home</a>
+            <a href="<?php echo htmlspecialchars($homeLink); ?>" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Home</a>
             <a href="Receipt.html" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Receipt</a>
             <a href="Process.html" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Process</a>
             <a href="katalog.php" class="block py-2 text-center text-h2Blue hover:text-indigo-500">Catalog</a>
@@ -74,40 +75,38 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : 'Visitor';
         <p class="texth1">When choosing a laundry catalog, consider the variety of services offered. Reviews and ratings can also help gauge reliability and quality.</p>
         <section class="catalog">
             <div class="catalog-grid">
-            <a href="order.php" class="block no-underline text-black hover:text-blue-500">
-                <div class="catalog-item">
-                    <img src="elements/K1.png" alt="One Day Service">
-                    <h3>One Day Service</h3>
-                    <p>Ratings</p>
-                    <p>⭐⭐⭐⭐⭐</p>
-                </div>
-            </a>
-            <a href="order1.php" class="block no-underline text-black hover:text-blue-500">
-                <div class="catalog-item">
-                    <img src="elements/K2.png" alt="Regular Package">
-                    <h3>Regular Package</h3>
-                    <p>Ratings</p>
-                    <p>⭐⭐⭐⭐</p>
-                </div>
-            </a>
-            <a href="order2.php" class="block no-underline text-black hover:text-blue-500">
-                <div class="catalog-item">
-                    <img src="elements/K3.png" alt="Bed Cover Package">
-                    <h3>Bed Cover Package</h3>
-                    <p>Ratings</p>
-                    <p>⭐⭐⭐</p>
-                </div>
-            </a>
-            <a href="order3.php" class="block no-underline text-black hover:text-blue-500">
-                <div class="catalog-item">
-                    <img src="elements/K4.png" alt="Shoes Package">
-                    <h3>Shoes Package</h3>
-                    <p>Ratings</p>
-                    <p>⭐⭐⭐⭐</p>
-                </div>
-            </a>
-
-
+                <a href="order.php" class="block no-underline text-black hover:text-blue-500">
+                    <div class="catalog-item">
+                        <img src="elements/K1.png" alt="One Day Service">
+                        <h3>One Day Service</h3>
+                        <p>Ratings</p>
+                        <p>⭐⭐⭐⭐⭐</p>
+                    </div>
+                </a>
+                <a href="order1.php" class="block no-underline text-black hover:text-blue-500">
+                    <div class="catalog-item">
+                        <img src="elements/K2.png" alt="Regular Package">
+                        <h3>Regular Package</h3>
+                        <p>Ratings</p>
+                        <p>⭐⭐⭐⭐</p>
+                    </div>
+                </a>
+                <a href="order2.php" class="block no-underline text-black hover:text-blue-500">
+                    <div class="catalog-item">
+                        <img src="elements/K3.png" alt="Bed Cover Package">
+                        <h3>Bed Cover Package</h3>
+                        <p>Ratings</p>
+                        <p>⭐⭐⭐</p>
+                    </div>
+                </a>
+                <a href="order3.php" class="block no-underline text-black hover:text-blue-500">
+                    <div class="catalog-item">
+                        <img src="elements/K4.png" alt="Shoes Package">
+                        <h3>Shoes Package</h3>
+                        <p>Ratings</p>
+                        <p>⭐⭐⭐⭐</p>
+                    </div>
+                </a>
             </div>
         </section>
     </main>
